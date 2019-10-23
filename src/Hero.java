@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 class Zs{
     static Zs z;
@@ -50,16 +51,13 @@ class Zs{
         }
 
     }
-      private  void btInfo(int at, int df){
-
-        if (at > 50 && df >50) {
-            System.out.println("这是一个攻守相对平衡的英雄");
-        } else if  (at >70  ) {
+      private  void btInfo(int at, int df, int hp){
+        if (at/df<0.5&& hp>at) {
+            System.out.println("这是一个防御型的英雄");
+        } else if (at/df >1&&at/df <2) {
+              System.out.println("这是一个攻守相对平衡的英雄");
+        }else if  (at/df >2  ) {
             System.out.println("这是一个极度攻击英雄");
-        }else if  (at<50&&df >70 ){
-            System.out.println("这是一个防御英雄" );
-        } else if  (at< 30 && df > 90){
-            System.out.println("这是一个极度防御英雄" );
         }else
             System.out.println("这是一个攻守平衡的英雄" );
       }
@@ -137,7 +135,7 @@ class Zs{
     }
     public void heroInfo(){
         this.sexInfo(sex);
-        btInfo( at, df);
+        btInfo( at, df,hp);
         this.hpInfo(hp);
         System.out.println("名字: "+name);
         System.out.println("年纪: "+age);
@@ -155,18 +153,24 @@ public class Hero {
     int herocount;
 
     public static void main(String[] args){
+        System.out.println("请指定英雄能力范围，本系统会随机生成一个英雄的属性");
+        Scanner input = new Scanner(System.in);
+        int setline = input.nextInt();
 
-        Random r = new Random();
+
+            Random r = new Random();
 //        r.nextInt();      //获取随机数 				int
 //        r.nextInt(10);    //获取随机数 [0-10)的随机数             int
 //        r.nextBoolean();  //获取随机布尔值			bolean
 //        r.nextDouble();   //获取随机数				double
 //        r.nextFloat();    //获取随机数				float
 //        r.nextLong();     //获取随机数   			        long
-                int a = r.nextInt(200);
-                int d = r.nextInt(200);
-                int h = r.nextInt(200);
-//
+
+
+        int a = r.nextInt(setline);
+        int d = r.nextInt(setline);
+        int h = r.nextInt(setline);
+
         Zs p1 = Zs.creatZs();
         p1.setHero("大娃",7,1,"空手","变大");
         p1.setBt(a,d,h);
