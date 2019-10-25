@@ -1,7 +1,7 @@
 import java.security.PublicKey;
 import java.util.Random;
 import java.util.Scanner;
-class Hero {
+abstract class  Hero {
     static Hero h;
     public String name;
     public int sex;
@@ -142,6 +142,9 @@ class Hero {
         System.out.println("******************************************");
 
     }
+    public abstract void aTtack() ;
+    public abstract void skillAttack();
+    public abstract void maxSkill();
 }
 
 
@@ -160,6 +163,15 @@ class Zs extends Hero {
     private Zs() {
 
         System.out.println("你创建了一个战士 : ");
+    }
+     public void aTtack(){
+        System.out.println(this.name+"进行了一次平砍");
+    }
+    public void skillAttack(){
+        System.out.println(this.name+"发动冲锋");
+    }
+    public void maxSkill(){
+        System.out.println(this.name+"发动剑圣风暴");
     }
 
 
@@ -183,6 +195,16 @@ class Zs extends Hero {
             System.out.println("你创建了一个法师 : ");
         }
 
+        public void aTtack(){
+            System.out.println(this.name+" 释放了一次魔力攻击");
+        }
+        public void skillAttack(){
+            System.out.println(this.name+" 释放了一次火球术");
+        }
+        public void maxSkill(){
+            System.out.println(this.name+" 释放了一次火焰风暴");
+        }
+
 
     }
 
@@ -203,7 +225,15 @@ class Ms extends Hero {
 
         System.out.println("你创建了一个牧师 : ");
     }
-
+    public void aTtack(){
+        System.out.println(this.name+" 释放了一次神圣攻击");
+    }
+    public void skillAttack(){
+        System.out.println(this.name+" 释放了一次治疗术");
+    }
+    public void maxSkill(){
+        System.out.println(this.name+" 释放了一次神圣新星");
+    }
 
 }
 
@@ -241,6 +271,9 @@ class Ms extends Hero {
             p1.setHero("大娃", 7, 1, "空手", "变大");
             p1.setBt(a, d, h,m);
             p1.heroInfo();
+            p1.aTtack();
+            p1.skillAttack();
+            p1.maxSkill();
 
             int a1 = r.nextInt(setline);
             int d1 = r.nextInt(setline);
@@ -252,6 +285,9 @@ class Ms extends Hero {
             p2.setHero(" 三娃", 7, 1, "空手", "喷火");
             p2.setBt(a1, d1, h1,m1);
             p2.heroInfo();
+            p2.aTtack();
+            p2.skillAttack();
+            p2.maxSkill();
 
 
             int a2 = r.nextInt(setline);
@@ -264,12 +300,16 @@ class Ms extends Hero {
             p3.setHero("七娃", 7, 1, "葫芦", "法宝");
             p3.setBt(a2, d2, h2,m2);
             p3.heroInfo();
+            p3.aTtack();
+            p3.skillAttack();
+            p3.maxSkill();
 
             Random chose = new Random();
             int ch = chose.nextInt(3);
             String[] hero = {"战士", "法师", "牧师"};
             System.out.println("你 随机到了" + hero[ch]);
             int hc = herocount++;
+
             System.out.println("目前有 " + hc + " 个英雄 ");
 
 
